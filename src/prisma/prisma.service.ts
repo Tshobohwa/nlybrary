@@ -6,7 +6,10 @@ import { PrismaPg } from '@prisma/adapter-pg';
 export class PrismaService extends PrismaClient {
   constructor() {
     super({
-      adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL! }),
+      adapter: new PrismaPg({
+        connectionString:
+          'postgresql://postgres:243243@localhost:5434/nlybrary?schema=public',
+      }),
     });
   }
 }
