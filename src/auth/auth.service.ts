@@ -31,11 +31,13 @@ export class AuthService {
       // Return the saved user
       return user;
     } catch (error) {
+      console.error('Signup error:', error);
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
           throw new ForbiddenException('Credentials taken');
         }
       }
+      throw error;
     }
   }
 
